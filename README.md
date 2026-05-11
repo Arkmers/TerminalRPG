@@ -2,8 +2,8 @@
 TerminalRPG is my take on crin's task 3 project for python programming.
 
 Functions:
--> Character creation [Done]
--> Enemies and encounters
--> Items and inventory
--> Shop and supplies
--> Progress importing/exporting
+-> Character creation [Done] \n
+-> Enemies and encounters \n
+-> Items and inventory \n
+-> Shop and supplies \n
+-> Progress importing/exporting \n
