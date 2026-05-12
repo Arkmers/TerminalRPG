@@ -3,7 +3,7 @@ TerminalRPG is my take on crin's task 3 project on his recent video, I wanted to
 
 ### Roadmap:
 - Character creation [x]
+- Character stats and inventory [ ]
 - Enemies and encounters [ ]
-- Items and inventory [ ]
 - Shop and supplies [ ]
 - Progress importing/exporting [ ]

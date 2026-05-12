@@ -1,5 +1,6 @@
 from entities import Player
 from colored import Fore, Style
+from helper import printbar
 
 isPlaying = True # Game State
 pName = "" # Player Name
@@ -10,7 +11,7 @@ def intro():
     attempts = 0
     
     print(Fore.green + f"Welcome to Terminal RPG!" + Style.reset)
-    print(Fore.cyan + f"==================================================" + Style.reset)
+    printbar()
     while characterCreated == False:
         print(Fore.green + f"Name your character: " + Style.reset)
         pName = input("> ").strip()
@@ -20,7 +21,7 @@ def intro():
             
             player = Player(pName)
             print(Fore.green + f"\nThe legend of {Fore.yellow + pName + Style.reset + Fore.green} begins..." + Style.reset)
-            print(Fore.cyan + f"==================================================" + Style.reset)
+            printbar()
             
         elif (pName == "" and attempts == 5):
             print(Fore.red + f"You are now Nameless." + Style.reset)
@@ -28,7 +29,7 @@ def intro():
             pName = "Nameless One"
             player = Player(pName)
             print(Fore.green + f"\nThe legend of the {Fore.red + pName + Style.reset + Fore.green} begins..." + Style.reset)
-            print(Fore.cyan + f"==================================================" + Style.reset)
+            printbar()
         else:
             print(Fore.red + f"Invalid name. Please try again." + Style.reset)
             attempts += 1
@@ -37,14 +38,19 @@ def intro():
 def encounter(Player):
     # Spawn enemy of difficulty choice, then fight until one of them dies.
     pass
+
 def inventory(Player):
-    # Displays player's inventory 
-    pass
+    # Display Stats and Inventory
+    Player.display_stats()
+    Player.display_inventory()
+    return True
+
 def shop(Player):
     # focus on combat system first, implementation later
     pass
 
 def end(Player):
+    printbar()
     print(Fore.green + f"Thank you for playing Terminal RPG!" + Style.reset)
     return False
 
@@ -55,16 +61,16 @@ actions = {
     "4": end
 }
 
-def action():
-    print(Fore.green + f"What would {Fore.yellow + player.name + Style.reset + Fore.green} like to do?" + Style.reset)
-    print(Fore.cyan + f"==================================================" + Style.reset)
+def action(Player):
+    print(Fore.green + f"What would {Fore.yellow + Player.name + Style.reset + Fore.green} like to do?" + Style.reset)
+    printbar()
     
     print(Fore.green + f"1. Encounter" + Style.reset)
     print(Fore.green + f"2. Inventory" + Style.reset)
     print(Fore.green + f"3. Shop" + Style.reset)
     print(Fore.green + f"4. End Game" + Style.reset)
-    print(Fore.cyan + f"==================================================" + Style.reset)
-    choice = input("> ")
+    printbar()
+    choice = input("> ").strip()
     if choice in actions:
         result = actions[choice](player)
         if result is False:
@@ -79,6 +85,6 @@ def main():
     intro()
 
     while isPlaying:
-        action()
+        action(player)
 
 main()
